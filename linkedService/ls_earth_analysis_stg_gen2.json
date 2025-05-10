@@ -1,0 +1,10 @@
+{
+	"name": "ls_earth_analysis_stg_gen2",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://stgearthanalysis.dfs.core.windows.net/"
+		}
+	}
+}

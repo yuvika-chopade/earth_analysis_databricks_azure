@@ -1,0 +1,22 @@
+{
+	"name": "ds_earth_analysis_bronze_ayer",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_earth_analysis_stg_gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "earthquake_data_@{formatDateTime(utcNow(),'yyyyMMddHHmmSS')}.json",
+					"type": "Expression"
+				},
+				"fileSystem": "bronze-layer"
+			}
+		},
+		"schema": {}
+	}
+}

@@ -11,12 +11,6 @@
 		"ls_restapi_earthquake_properties_typeProperties_url": {
 			"value": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary"
 		},
-		"earth_analysys_trigger_properties_pl_ingest_raw_data_parameters_relative_url": {
-			"value": "all_month.geojson "
-		},
-		"trigger_earth_month_properties_pl_ingest_raw_data_parameters_relative_url": {
-			"value": "all_month.geojson "
-		},
 		"trigger_earth_monthly_properties_pl_ingest_raw_data_parameters_relative_url": {
 			"value": "all_month.geojson "
 		},

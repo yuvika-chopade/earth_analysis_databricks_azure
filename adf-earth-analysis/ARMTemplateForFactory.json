@@ -15,7 +15,15 @@
 			"type": "string",
 			"defaultValue": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary"
 		},
+		"earth_analysys_trigger_properties_pl_ingest_raw_data_parameters_relative_url": {
+			"type": "string",
+			"defaultValue": "all_month.geojson "
+		},
 		"trigger_earth_month_properties_pl_ingest_raw_data_parameters_relative_url": {
+			"type": "string",
+			"defaultValue": "all_month.geojson "
+		},
+		"trigger_earth_monthly_properties_pl_ingest_raw_data_parameters_relative_url": {
 			"type": "string",
 			"defaultValue": "all_month.geojson "
 		}
@@ -116,8 +124,12 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"folderPath": {
+						"fileName": {
 							"value": "earthquake_data_@{formatDateTime(utcNow(),'yyyyMMddHHmmSS')}.json",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@formatDateTime(utcNow(),'yyyy-MM-dd')",
 							"type": "Expression"
 						},
 						"fileSystem": "bronze-layer"
@@ -186,6 +198,46 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/earth_analysys_trigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingest_raw_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"relative_url": "[parameters('earth_analysys_trigger_properties_pl_ingest_raw_data_parameters_relative_url')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2025-05-11T06:57:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								0
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_raw_data')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/trigger_earth_month')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
@@ -209,6 +261,46 @@
 						"frequency": "Day",
 						"interval": 1,
 						"startTime": "2025-05-11T06:59:00",
+						"timeZone": "India Standard Time",
+						"schedule": {
+							"minutes": [
+								0
+							],
+							"hours": [
+								0
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_raw_data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger_earth_monthly')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingest_raw_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"relative_url": "[parameters('trigger_earth_monthly_properties_pl_ingest_raw_data_parameters_relative_url')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2025-05-11T00:00:00",
 						"timeZone": "India Standard Time",
 						"schedule": {
 							"minutes": [

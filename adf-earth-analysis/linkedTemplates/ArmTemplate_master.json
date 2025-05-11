@@ -15,7 +15,15 @@
 			"type": "string",
 			"defaultValue": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary"
 		},
+		"earth_analysys_trigger_properties_pl_ingest_raw_data_parameters_relative_url": {
+			"type": "string",
+			"defaultValue": "all_month.geojson "
+		},
 		"trigger_earth_month_properties_pl_ingest_raw_data_parameters_relative_url": {
+			"type": "string",
+			"defaultValue": "all_month.geojson "
+		},
+		"trigger_earth_monthly_properties_pl_ingest_raw_data_parameters_relative_url": {
 			"type": "string",
 			"defaultValue": "all_month.geojson "
 		},
@@ -52,8 +60,14 @@
 					"ls_restapi_earthquake_properties_typeProperties_url": {
 						"value": "[parameters('ls_restapi_earthquake_properties_typeProperties_url')]"
 					},
+					"earth_analysys_trigger_properties_pl_ingest_raw_data_parameters_relative_url": {
+						"value": "[parameters('earth_analysys_trigger_properties_pl_ingest_raw_data_parameters_relative_url')]"
+					},
 					"trigger_earth_month_properties_pl_ingest_raw_data_parameters_relative_url": {
 						"value": "[parameters('trigger_earth_month_properties_pl_ingest_raw_data_parameters_relative_url')]"
+					},
+					"trigger_earth_monthly_properties_pl_ingest_raw_data_parameters_relative_url": {
+						"value": "[parameters('trigger_earth_monthly_properties_pl_ingest_raw_data_parameters_relative_url')]"
 					}
 				}
 			},

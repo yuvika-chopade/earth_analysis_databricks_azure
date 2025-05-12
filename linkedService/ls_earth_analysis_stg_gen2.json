@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://stgearthanalysis.dfs.core.windows.net/"
+			"url": "https://stgearthdataanalysis.dfs.core.windows.net/"
 		}
 	}
 }

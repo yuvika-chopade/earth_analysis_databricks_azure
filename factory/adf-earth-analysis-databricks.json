@@ -1,0 +1,9 @@
+{
+	"name": "adf-earth-analysis-databricks",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "b9bb4a5d-63a3-4237-9808-2be17f558c50",
+		"tenantId": "388a9693-fde6-4cab-a441-de7a4d68c0d5"
+	}
+}
